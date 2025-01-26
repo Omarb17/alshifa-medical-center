@@ -1,14 +1,14 @@
 import Header from "../components/Header";
-import MenuDeSpécialité from "../components/MenuDeSpécialité";
-import LesMeilleursMédecins from "../components/LesMeilleursMédecins";
+import SpecialityMenu from "../components/SpecialityMenu";
+import TopDoctors from "../components/TopDoctors";
 import Banner from "../components/Banner";
 
 const Accueil = () => {
   return (
     <div>
       <Header />
-      <MenuDeSpécialité />
-      <LesMeilleursMédecins />
+      <SpecialityMenu />
+      <TopDoctors />
       <Banner />
     </div>
   );

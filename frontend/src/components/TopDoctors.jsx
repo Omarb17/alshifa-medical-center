@@ -16,7 +16,7 @@ const TopDoctors = () => {
       <div className="grid w-full gap-4 px-3 pt-5 grid-cols-auto gap-y-6 sm:px-0">
         {doctors.slice(0, 10).map((item, index) => (
           <div
-            onClick={() => navigate(`/rendezvous/${item._id}`)}
+            onClick={() => navigate(`/appointment/${item._id}`)}
             className="border border-blue-1 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
             key={index}
           >
@@ -34,7 +34,7 @@ const TopDoctors = () => {
       </div>
       <button
         onClick={() => {
-          navigate(`/les-médecins`);
+          navigate(`/doctors`);
           scrollTo(0, 0);
         }}
         className="px-12 py-3 mt-10 text-xl font-black rounded-full bg-blue-5 text-blue-7"

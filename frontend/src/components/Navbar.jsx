@@ -23,13 +23,13 @@ const Navbar = () => {
           </li>
           <hr className="hidden w-3/5 h-1 m-auto border-none outline-none bg-blue-1" />
         </NavLink>
-        <NavLink to="/les-médecins">
+        <NavLink to="/doctors">
           <li className="py-1 text-2xl font-bold active:text-blue-8 text-blue-6">
             Tous Les Médecins
           </li>
           <hr className="hidden w-3/5 h-1 m-auto border-none outline-none bg-blue-1" />
         </NavLink>
-        <NavLink to="/qui-somme-nous">
+        <NavLink to="/about">
           <li className="py-1 text-2xl font-bold active:text-blue-8 text-blue-6">
             Qui Sommes-Nous?
           </li>
@@ -51,13 +51,13 @@ const Navbar = () => {
             <div className="absolute top-0 right-0 z-20 hidden pt-12 text-base font-medium text-blue-9 group-hover:block">
               <div className="flex-col gap-4 p-4 rounded min-w-48 bg-blue-6">
                 <p
-                  onClick={() => navigate("mon-profil")}
+                  onClick={() => navigate("my-profile")}
                   className="cursor-pointer hover:text-blue-4"
                 >
                   Mon profil
                 </p>
                 <p
-                  onClick={() => navigate("mes-rendez-vous")}
+                  onClick={() => navigate("my-appointments")}
                   className="cursor-pointer hover:text-blue-4"
                 >
                   Mes Rendez-vous

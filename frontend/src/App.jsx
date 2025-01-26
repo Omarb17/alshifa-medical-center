@@ -1,29 +1,29 @@
 import { Route, Routes } from "react-router-dom";
-import Accueil from "./pages/Accueil";
-import LesMédecins from "./pages/LesMédecins";
-import Connexion from "./pages/Connexion";
-import QuiSommesNous from "./pages/QuiSommesNous";
+import Home from "./pages/Home";
+import Doctors from "./pages/Doctors";
+import Login from "./pages/Login";
+import About from "./pages/About";
 import Contact from "./pages/Contact";
-import MonProfil from "./pages/MonProfil";
-import MesRendezVous from "./pages/MesRendezVous";
-import RendezVous from "./pages/RendezVous";
-import BarreDeNavigation from "./components/BarreDeNavigation";
+import MyProfile from "./pages/MyProfile";
+import MyAppointments from "./pages/MyAppointments";
+import Appointment from "./pages/Appointment";
+import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 const App = () => {
   return (
     <div className="mx-4 sm:mx-[10%]">
-      <BarreDeNavigation />
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Accueil />} />
-        <Route path="/les-médecins" element={<LesMédecins />} />
-        <Route path="/les-médecins/:speciality" element={<LesMédecins />} />
-        <Route path="/connexion" element={<Connexion />} />
-        <Route path="/qui-sommes-nous?" element={<QuiSommesNous />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/doctors" element={<Doctors />} />
+        <Route path="/doctors/:speciality" element={<Doctors />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/mon-profil" element={<MonProfil />} />
-        <Route path="/mes-rendez-vous" element={<MesRendezVous />} />
-        <Route path="/rendezvous/:médId" element={<RendezVous />} />
+        <Route path="/my-profile" element={<MyProfile />} />
+        <Route path="/my-appointments" element={<MyAppointments />} />
+        <Route path="/appointment/:docId" element={<Appointment />} />
       </Routes>
       <Footer />
     </div>

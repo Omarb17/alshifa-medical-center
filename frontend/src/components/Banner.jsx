@@ -14,7 +14,7 @@ const Banner = () => {
 
         <button
           onClick={() => {
-            navigate("/connexion");
+            navigate("/login");
             scrollTo(0, 0);
           }}
           className="flex items-center gap-3 px-5 py-3 m-auto mt-6 text-xl transition-all rounded-full lg:mb-12 md:m-0 hover:scale-105 duartion-300 bg-blue-8 text-blue-1 "

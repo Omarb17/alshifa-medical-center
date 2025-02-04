@@ -6,8 +6,10 @@ export const AppContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 const AppContextProvider = ({ children }) => {
+  const currencySymbol = "DH";
   const value = {
     doctors,
+    currencySymbol,
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

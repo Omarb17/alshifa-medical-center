@@ -48,9 +48,9 @@ const LesMédecins = () => {
                   ? navigate("/doctors")
                   : navigate("/doctors/Médecin généraliste")
               }
-              className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-blue-8 rounded-full transition-all cursor-pointer ${
+              className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-blue-8 rounded-xl transition-all cursor-pointer ${
                 speciality === "Médecin généraliste"
-                  ? "bg-blue-6 text-black"
+                  ? "bg-blue-6 text-blue-9 font-medium "
                   : ""
               }`}
             >
@@ -62,8 +62,10 @@ const LesMédecins = () => {
                   ? navigate("/doctors")
                   : navigate("/doctors/Gynécologue")
               }
-              className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-blue-8 rounded-full transition-all cursor-pointer ${
-                speciality === "Gynécologue" ? "bg-blue-6 text-black" : ""
+              className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-blue-8 rounded-xl transition-all cursor-pointer ${
+                speciality === "Gynécologue"
+                  ? "bg-blue-6 text-blue-9 font-medium"
+                  : ""
               }`}
             >
               Gynécologue
@@ -74,8 +76,10 @@ const LesMédecins = () => {
                   ? navigate("/doctors")
                   : navigate("/doctors/Dermatologue")
               }
-              className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-blue-6 rounded-full transition-all cursor-pointer ${
-                speciality === "Dermatologue" ? "bg-blue-6 text-black" : ""
+              className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-blue-6 rounded-xl transition-all cursor-pointer ${
+                speciality === "Dermatologue"
+                  ? "bg-blue-6 text-blue-9 font-medium"
+                  : ""
               }`}
             >
               Dermatologue
@@ -86,8 +90,10 @@ const LesMédecins = () => {
                   ? navigate("/doctors")
                   : navigate("/doctors/Pédiatres")
               }
-              className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-blue-8 rounded-full transition-all cursor-pointer ${
-                speciality === "Pédiatres" ? "bg-blue-6 text-black" : ""
+              className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-blue-8 rounded-xl transition-all cursor-pointer ${
+                speciality === "Pédiatres"
+                  ? "bg-blue-6 text-blue-9 font-medium"
+                  : ""
               }`}
             >
               Pédiatres
@@ -98,8 +104,10 @@ const LesMédecins = () => {
                   ? navigate("/doctors")
                   : navigate("/doctors/Neurologue")
               }
-              className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-blue-8 rounded-full transition-all cursor-pointer ${
-                speciality === "Neurologue" ? "bg-blue-6 text-black" : ""
+              className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-blue-8 rounded-xl transition-all cursor-pointer ${
+                speciality === "Neurologue"
+                  ? "bg-blue-6 text-blue-9 font-medium"
+                  : ""
               }`}
             >
               Neurologue
@@ -110,8 +118,10 @@ const LesMédecins = () => {
                   ? navigate("/doctors")
                   : navigate("/doctors/Gastroentérologue")
               }
-              className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-blue-8 rounded-full transition-all cursor-pointer ${
-                speciality === "Gastroentérologue" ? "bg-blue-6 text-black" : ""
+              className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-blue-8 rounded-xl transition-all cursor-pointer ${
+                speciality === "Gastroentérologue"
+                  ? "bg-blue-6 text-blue-9 font-medium"
+                  : ""
               }`}
             >
               Gastroentérologue
@@ -120,14 +130,16 @@ const LesMédecins = () => {
           <div className="grid w-full gap-4 grid-cols-auto gap-y-6">
             {filterDoc.map((item, index) => (
               <div
-                onClick={() => navigate(`/appointment/${item._id}`)}
+                onClick={() => (
+                  navigate(`/appointment/${item._id}`), scrollTo(0, 0)
+                )}
                 className="border border-blue-1 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
                 key={index}
               >
                 <img className="bg-blue-1" src={item.image} alt="" />
                 <div className="p-4">
                   <div className="flex items-center gap-2 text-sm text-center text-blue-5 ">
-                    <p className="w-2 h-2 bg-green-500 rounded-full"></p>
+                    <p className="w-2 h-2 bg-green-500 rounded-xl"></p>
                     <p className="text-green-500">Disponible</p>
                   </div>
                   <p className="text-lg font-medium text-blue-6">{item.name}</p>

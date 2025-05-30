@@ -1,12 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { assets } from "../assets/assets";
 import { NavLink, useNavigate } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
 
+  const { token, setToken, userData } = useContext(AppContext);
+
   const [showMenu, setShowMenu] = useState(false);
-  const [token, setToken] = useState(true);
+
+  const logout = () => {
+    setToken(false);
+    localStorage.removeItem("token");
+  };
 
   return (
     <div className="flex items-center justify-between py-5 mt-3 mb-5 text-xl border-b-4 bg-blue-7 rounded-2xl border-b-blue-8 px-14">
@@ -19,19 +26,19 @@ const Navbar = () => {
       <ul className="items-start hidden gap-5 font-medium md:flex">
         <NavLink to="/">
           <li className="py-1 text-2xl font-bold active:text-blue-8 text-blue-6">
-            Accueil
+            Home
           </li>
           <hr className="hidden w-3/5 h-1 m-auto border-none outline-none bg-blue-1" />
         </NavLink>
         <NavLink to="/doctors">
           <li className="py-1 text-2xl font-bold active:text-blue-8 text-blue-6">
-            Tous Les Médecins
+            All Doctors
           </li>
           <hr className="hidden w-3/5 h-1 m-auto border-none outline-none bg-blue-1" />
         </NavLink>
         <NavLink to="/about">
           <li className="py-1 text-2xl font-bold active:text-blue-8 text-blue-6">
-            Qui Sommes-Nous?
+            About Us
           </li>
           <hr className="hidden w-3/5 h-1 m-auto border-none outline-none bg-blue-1" />
         </NavLink>
@@ -43,9 +50,9 @@ const Navbar = () => {
         </NavLink>
       </ul>
       <div className="flex items-center gap-4">
-        {token ? (
+        {token && userData ? (
           <div className="relative flex items-center gap-2 cursor-pointer group">
-            <img className="w-8 rounded-full" src={assets.profile_pic} alt="" />
+            <img className="w-12 rounded-full" src={userData.image} alt="" />
             <img className="w-2.5" src={assets.dropdown_icon} alt="" />
 
             <div className="absolute top-0 right-0 z-20 hidden pt-12 text-base font-medium text-blue-9 group-hover:block">
@@ -54,19 +61,19 @@ const Navbar = () => {
                   onClick={() => navigate("my-profile")}
                   className="cursor-pointer hover:text-blue-4"
                 >
-                  Mon profil
+                  My Profile
                 </p>
                 <p
                   onClick={() => navigate("my-appointments")}
                   className="cursor-pointer hover:text-blue-4"
                 >
-                  Mes Rendez-vous
+                  My Appointments
                 </p>
                 <p
-                  onClick={() => setToken(false)}
+                  onClick={logout}
                   className="cursor-pointer hover:text-blue-4"
                 >
-                  Déconnecter
+                  Logout
                 </p>
               </div>
             </div>
@@ -76,7 +83,7 @@ const Navbar = () => {
             onClick={() => navigate("/login")}
             className="hidden px-8 py-3 font-light rounded-full md:block bg-blue-8 text-blue-3 "
           >
-            Créer un compte
+            Sign Up / Log In
           </button>
         )}
         <img

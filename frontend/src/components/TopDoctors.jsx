@@ -20,10 +20,14 @@ const TopDoctors = () => {
               navigate(`/appointment/${item._id}`);
               scrollTo(0, 0);
             }}
-            className="border border-blue-1 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
+            className="border border-blue-1 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] hover:bg-blue-2 transition-all duration-500"
             key={index}
           >
-            <img className="bg-blue-1" src={item.image} alt="" />
+            <img
+              className="bg-blue-1 hover:bg-blue-2"
+              src={item.image}
+              alt=""
+            />
             <div className="p-4">
               <div className="flex items-center gap-2 text-sm text-center text-blue-5 ">
                 <p className="w-2 h-2 bg-green-500 rounded-full"></p>

@@ -51,7 +51,7 @@ const Sidebar = () => {
                 isActive ? "border-r-8 bg-blue-2 border-blue-3" : ""
               }`
             }
-            to={"/doctors-list"}
+            to={"/all-doctors"}
           >
             <img src={assets.people_icon} alt="" />
             <p className="hidden md:block">Doctors List</p>

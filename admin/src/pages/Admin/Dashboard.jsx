@@ -5,26 +5,30 @@ import { assets } from "../../assets/assets";
 import { AppContext } from "../../context/AppContext";
 
 const Dashboard = () => {
-  const { adminToken, cancelAppointment, dashData, getDashboardData } =
-    useContext(AdminContext);
+  const {
+    adminToken,
+    cancelAppointment,
+    adminDashData,
+    getAdminDashboardData,
+  } = useContext(AdminContext);
 
   const { slotDateFormat } = useContext(AppContext);
 
   useEffect(() => {
     if (adminToken) {
-      getDashboardData();
+      getAdminDashboardData();
     }
   }, [adminToken]);
 
   return (
-    dashData && (
+    adminDashData && (
       <div className="m-5">
         <div className="flex flex-wrap gap-3">
           <div className="flex items-center gap-2 p-4 transition-all bg-white border-2 border-gray-100 rounded cursor-pointer min-w-52 hover:scale-105">
             <img className="w-14" src={assets.doctor_icon} alt="" />
             <div>
               <p className="text-xl font-semibold text-gray-600">
-                {dashData.doctors}
+                {adminDashData.doctors}
               </p>
               <p className="text-gray-400">Doctors</p>
             </div>
@@ -34,9 +38,19 @@ const Dashboard = () => {
             <img className="w-14" src={assets.appointments_icon} alt="" />
             <div>
               <p className="text-xl font-semibold text-gray-600">
-                {dashData.appointments}
+                {adminDashData.appointments}
               </p>
-              <p className="text-gray-400">Appointments</p>
+              <p className="text-gray-400">All Appointments</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 p-4 transition-all bg-white border-2 border-gray-100 rounded cursor-pointer min-w-52 hover:scale-105">
+            <img className="w-14" src={assets.appointments_icon} alt="" />
+            <div>
+              <p className="text-xl font-semibold text-gray-600">
+                {adminDashData.completedAppointments}
+              </p>
+              <p className="text-gray-400">Completed Appointments</p>
             </div>
           </div>
 
@@ -44,21 +58,21 @@ const Dashboard = () => {
             <img className="w-14" src={assets.patients_icon} alt="" />
             <div>
               <p className="text-xl font-semibold text-gray-600">
-                {dashData.patients}
+                {adminDashData.patients}
               </p>
               <p className="text-gray-400">Patients</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white">
-          <div className="flex items-center gap-2.5 px-4 py-4 mt-10 rounded-t border">
+        <div className="bg-white mt-10 border rounded text-sm max-h-[80vh] overflow-y-scroll min-h-[60vh]">
+          <div className="flex items-center gap-2.5 px-4 py-4  rounded-t border">
             <img src={assets.list_icon} alt="" />
-            <p className="font-semibold">Latest Booking</p>
+            <p className="font-semibold">Bookings</p>
           </div>
 
           <div className="pt-4 border border-t-0">
-            {dashData?.latestAppointments?.map((item, index) => (
+            {adminDashData?.latestAppointments?.map((item, index) => (
               <div
                 className="flex items-center gap-3 px-6 py-3 hover:bg-gray-100"
                 key={index}
@@ -79,13 +93,14 @@ const Dashboard = () => {
 
                 {item.cancelled ? (
                   <p className="text-xs font-medium text-red-400">Cancelled</p>
+                ) : item.isCompleted ? (
+                  <p className="text-xs font-medium text-green-400">
+                    Completed
+                  </p>
                 ) : (
-                  <img
-                    onClick={() => cancelAppointment(item._id)}
-                    className="w-10 cursor-pointer"
-                    src={assets.cancel_icon}
-                    alt=""
-                  />
+                  <p className="text-xs font-medium text-blue-8">
+                    Need An Action In Appointments Page
+                  </p>
                 )}
               </div>
             ))}

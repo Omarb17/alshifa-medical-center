@@ -11,7 +11,7 @@ const AdminContextProvider = ({ children }) => {
   );
   const [doctors, setDoctors] = useState([]);
   const [appointments, setAppointments] = useState([]);
-  const [dashData, setDashData] = useState([]);
+  const [adminDashData, setAdminDashData] = useState([]);
 
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -78,7 +78,7 @@ const AdminContextProvider = ({ children }) => {
       if (data.success) {
         toast.success(data.message);
         getAllAppointments();
-        getDashboardData();
+        getAdminDashboardData();
       } else {
         toast.error(data.message);
       }
@@ -87,14 +87,17 @@ const AdminContextProvider = ({ children }) => {
     }
   };
 
-  const getDashboardData = async () => {
+  const getAdminDashboardData = async () => {
     try {
-      const { data } = await axios.get(backendUrl + "/api/admin/dashboard", {
-        headers: { adminToken },
-      });
+      const { data } = await axios.get(
+        backendUrl + "/api/admin/admin-dashboard",
+        {
+          headers: { adminToken },
+        }
+      );
       if (data.success) {
-        setDashData(data.dashData);
-        console.log(data.dashData);
+        setAdminDashData(data.adminDashData);
+        console.log(data.adminDashData);
       } else {
         toast.error(data.message);
       }
@@ -114,8 +117,8 @@ const AdminContextProvider = ({ children }) => {
     setAppointments,
     getAllAppointments,
     cancelAppointment,
-    getDashboardData,
-    dashData,
+    getAdminDashboardData,
+    adminDashData,
   };
 
   return (

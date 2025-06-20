@@ -163,14 +163,18 @@ const adminDashboard = async (req, res) => {
     const doctors = await doctorModel.find({});
     const users = await userModel.find({});
     const appointments = await appointmentModel.find({});
+    const completedAppointments = await appointmentModel.find({
+      isCompleted: true,
+    });
 
-    const dashData = {
+    const adminDashData = {
       doctors: doctors.length,
       patients: users.length,
       appointments: appointments.length,
-      latestAppointments: appointments.reverse().slice(0, 5),
+      completedAppointments: completedAppointments.length,
+      latestAppointments: appointments.reverse(),
     };
-    res.json({ success: true, dashData });
+    res.json({ success: true, adminDashData });
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: error.message });
